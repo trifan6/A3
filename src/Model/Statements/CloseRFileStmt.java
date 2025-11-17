@@ -35,7 +35,9 @@ public class CloseRFileStmt implements IStmt
         try
         {
             br.close();
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             throw new MyException("closeRFile: IO error while closing file " + sVal.getVal() + ": " + e.getMessage());
         }
         ft.remove(sVal.toString());

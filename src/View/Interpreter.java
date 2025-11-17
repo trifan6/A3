@@ -16,8 +16,10 @@ import Model.Values.StringValue;
 import Repository.IRepository;
 import Repository.Repository;
 
-public class Interpreter {
-    public static void main(String[] args) {
+public class Interpreter
+{
+    public static void main(String[] args)
+    {
 
         IStmt ex1 = new CompStmt(
                 new VarDeclStmt("v", new IntType()),

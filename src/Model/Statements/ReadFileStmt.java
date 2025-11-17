@@ -46,20 +46,29 @@ public class ReadFileStmt implements IStmt
             throw new MyException("readFile: file " + sVal.getVal() + " is not opened.");
 
         BufferedReader br = ft.get(sVal.toString());
-        try {
+        try
+        {
             String line = br.readLine();
             int readInt;
-            if (line == null) {
+            if (line == null)
+            {
                 readInt = 0;
-            } else {
-                try {
+            }
+            else
+            {
+                try
+                {
                     readInt = Integer.parseInt(line.trim());
-                } catch (NumberFormatException nfe) {
+                }
+                catch (NumberFormatException nfe)
+                {
                     throw new MyException("readFile: cannot parse integer from line: \"" + line + "\"");
                 }
             }
             symTable.update(varName, new IntValue(readInt)); // update variable with the integer
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             throw new MyException("readFile: IO error while reading file " + sVal.getVal() + ": " + e.getMessage());
         }
         return state;
