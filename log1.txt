@@ -1,0 +1,10 @@
+ExeStack:
+print(42)
+SymTable
+Out:
+FileTable:
+ExeStack:
+SymTable
+Out:
+42
+FileTable:
