@@ -28,7 +28,7 @@ public class MyTable implements MyITable
     @Override
     public boolean isDefined(StringValue key)
     {
-        return this.fileTable.containsKey(key);
+        return this.fileTable.containsKey(key.toString());
     }
 
     @Override

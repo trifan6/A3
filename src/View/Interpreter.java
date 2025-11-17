@@ -3,6 +3,7 @@ package View;
 import Controller.Controller;
 import Model.ADT.*;
 import Model.Expressions.ArithExp;
+import Model.Expressions.RelExp;
 import Model.Expressions.ValueExp;
 import Model.Expressions.VarExp;
 import Model.PrgState;
@@ -13,6 +14,7 @@ import Model.Types.StringType;
 import Model.Values.BoolValue;
 import Model.Values.IntValue;
 import Model.Values.StringValue;
+import Model.Values.Value;
 import Repository.IRepository;
 import Repository.Repository;
 
@@ -38,7 +40,6 @@ public class Interpreter
         );
         IRepository repo1 = new Repository(prg1, "log1.txt");
         Controller ctr1 = new Controller(repo1);
-
 
 
         IStmt ex2 = new CompStmt(
@@ -74,7 +75,6 @@ public class Interpreter
         );
         IRepository repo2 = new Repository(prg2, "log2.txt");
         Controller ctr2 = new Controller(repo2);
-
 
 
         IStmt ex3 = new CompStmt(
@@ -144,12 +144,49 @@ public class Interpreter
         IRepository repo4 = new Repository(prg4, "log4.txt");
         Controller ctr4 = new Controller(repo4);
 
+
+        IStmt ex5 =
+                new CompStmt(
+                        new VarDeclStmt("a", new IntType()),
+                        new CompStmt(
+                                new VarDeclStmt("v", new IntType()),
+                                new CompStmt(
+                                        new AssignStmt("a", new ValueExp(new IntValue(2))),
+                                                new IfStmt(
+                                                        new RelExp(
+                                                                new VarExp("a"),
+                                                                new ValueExp(new IntValue(2)),
+                                                                "=="),
+                                                        new PrintStmt(new ValueExp(new StringValue("true"))),
+                                                        new PrintStmt(new ValueExp(new StringValue("false")))
+
+
+
+                                                )
+                                )
+                        )
+                );
+
+        PrgState prg5 = new PrgState(
+                new MyStack<>(),
+                new MyDictionary<>(),
+                new MyList<>(),
+                new MyTable(),
+                ex5
+        );
+
+        IRepository repo5 = new Repository(prg5, "log5.txt");
+        Controller ctr5 = new Controller(repo5);
+
+
+
         TextMenu menu = new TextMenu();
         menu.addCommand(new ExitCommand("0", "exit"));
         menu.addCommand(new RunExample("1", ex1.toString(), ctr1));
         menu.addCommand(new RunExample("2", ex2.toString(), ctr2));
         menu.addCommand(new RunExample("3", ex3.toString(), ctr4));
         menu.addCommand(new RunExample("4", ex4.toString(), ctr4));
+        menu.addCommand(new RunExample("5", ex5.toString(), ctr5));
 
         menu.show();
     }

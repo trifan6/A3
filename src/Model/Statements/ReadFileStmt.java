@@ -65,7 +65,7 @@ public class ReadFileStmt implements IStmt
                     throw new MyException("readFile: cannot parse integer from line: \"" + line + "\"");
                 }
             }
-            symTable.update(varName, new IntValue(readInt)); // update variable with the integer
+            symTable.update(varName, new IntValue(readInt));
         }
         catch (IOException e)
         {

@@ -41,6 +41,7 @@ SymTable
 varf: test.in
 Out:
 FileTable:
+test.in
 ExeStack:
 int varc
 (readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))
@@ -48,6 +49,7 @@ SymTable
 varf: test.in
 Out:
 FileTable:
+test.in
 ExeStack:
 (readFile(varf,varc),(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf)))))
 SymTable
@@ -55,6 +57,7 @@ varf: test.in
 varc: 0
 Out:
 FileTable:
+test.in
 ExeStack:
 readFile(varf,varc)
 (print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))
@@ -62,4 +65,78 @@ SymTable
 varf: test.in
 varc: 0
 Out:
+FileTable:
+test.in
+ExeStack:
+(print(varc),(readFile(varf,varc),(print(varc),closeRFile(varf))))
+SymTable
+varf: test.in
+varc: 15
+Out:
+FileTable:
+test.in
+ExeStack:
+print(varc)
+(readFile(varf,varc),(print(varc),closeRFile(varf)))
+SymTable
+varf: test.in
+varc: 15
+Out:
+FileTable:
+test.in
+ExeStack:
+(readFile(varf,varc),(print(varc),closeRFile(varf)))
+SymTable
+varf: test.in
+varc: 15
+Out:
+15
+FileTable:
+test.in
+ExeStack:
+readFile(varf,varc)
+(print(varc),closeRFile(varf))
+SymTable
+varf: test.in
+varc: 15
+Out:
+15
+FileTable:
+test.in
+ExeStack:
+(print(varc),closeRFile(varf))
+SymTable
+varf: test.in
+varc: 50
+Out:
+15
+FileTable:
+test.in
+ExeStack:
+print(varc)
+closeRFile(varf)
+SymTable
+varf: test.in
+varc: 50
+Out:
+15
+FileTable:
+test.in
+ExeStack:
+closeRFile(varf)
+SymTable
+varf: test.in
+varc: 50
+Out:
+15
+50
+FileTable:
+test.in
+ExeStack:
+SymTable
+varf: test.in
+varc: 50
+Out:
+15
+50
 FileTable:
